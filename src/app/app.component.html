@@ -1,0 +1,27 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container text-center">
+  <div class="row">
+    <h2>Timer <i class="glyphicon glyphicon-hourglass"  aria-hidden="true"></i></h2>
+    <form action=""  *ngIf="startTime" class="form-inline">
+      <input type="number" name="min" [(ngModel)]="hou" class="form-control">
+      <input type="number" name="min" [(ngModel)]="min" class="form-control">
+      <input type="number" name="sec" [(ngModel)]="sec" class="form-control" maxlength=2>
+    </form>
+    <h1> {{ hou }} : {{ min }} : {{ sec }}</h1>
+    <div class="row">
+      <button (click)="start()" [disabled]="sec === 0  || !StartTrue " class="btn btn-primary">START</button>
+      <button (click)="stop()" *ngIf="sec !== 0 && sec" class="btn btn-danger">STOP</button>
+      <button (click)="wait()" *ngIf="sec !== 0 && sec" class="btn">WAIT</button>
+      <button (click)="reset()" *ngIf="sec !== 0 && sec" class="btn"><i class="glyphicon glyphicon-refresh"></i></button>
+    </div>
+    <div>
+      <br>
+      <div class="row">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action" *ngFor="let time of timestoping">{{time.hou}} : {{time.min}} : {{time.sec}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
